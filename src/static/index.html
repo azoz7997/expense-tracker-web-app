@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة المصاريف</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-calculator header-icon"></i>
+                <h1 class="header-title">حاسبة المصاريف</h1>
+                <p class="header-subtitle">تتبع مصاريفك بسهولة وذكاء</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Add Expense Form -->
+            <section class="expense-form-section">
+                <div class="form-card">
+                    <h2 class="form-title">
+                        <i class="fas fa-plus-circle"></i>
+                        إضافة مصروف جديد
+                    </h2>
+                    
+                    <form id="expenseForm" class="expense-form">
+                        <div class="form-group">
+                            <label for="description" class="form-label">
+                                <i class="fas fa-tag"></i>
+                                وصف المصروف
+                            </label>
+                            <input 
+                                type="text" 
+                                id="description" 
+                                name="description" 
+                                class="form-input"
+                                placeholder="مثال: بنزين السيارة، فاتورة الكهرباء..."
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="amount" class="form-label">
+                                <i class="fas fa-money-bill-wave"></i>
+                                المبلغ (ريال)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="amount" 
+                                name="amount" 
+                                class="form-input"
+                                placeholder="0.00"
+                                step="0.01"
+                                min="0"
+                                required
+                            >
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            إضافة المصروف
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Summary Section -->
+            <section class="summary-section">
+                <div class="summary-card">
+                    <div class="summary-content">
+                        <div class="summary-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="summary-info">
+                            <h3 class="summary-title">المجموع الكلي</h3>
+                            <p class="summary-amount" id="totalAmount">0.00 ريال</p>
+                            <p class="summary-count" id="expenseCount">0 مصروف</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Actions Section -->
+            <section class="actions-section">
+                <div class="actions-card">
+                    <button id="exportPdfBtn" class="btn btn-success">
+                        <i class="fas fa-print"></i>
+                        طباعة التقرير
+                    </button>
+                    
+                    <button id="clearAllBtn" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                        مسح الكل
+                    </button>
+                </div>
+            </section>
+
+            <!-- Expenses List -->
+            <section class="expenses-section">
+                <div class="expenses-card">
+                    <h2 class="expenses-title">
+                        <i class="fas fa-list"></i>
+                        قائمة المصاريف
+                    </h2>
+                    
+                    <div class="expenses-list" id="expensesList">
+                        <div class="empty-state" id="emptyState">
+                            <i class="fas fa-receipt"></i>
+                            <p>لا توجد مصاريف حتى الآن</p>
+                            <small>ابدأ بإضافة أول مصروف لك</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>جاري المعالجة...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
